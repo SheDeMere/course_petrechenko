@@ -209,21 +209,69 @@
 //      console.log(personalMovieDB)
 
 
-const  getMathResult = (a, b) => {
-    let res = '';
-    let sum = 0;
-    for(let i = 1; i <= b; i++) {
-        sum += a;
-        if(i === b) {
-            res += sum
-        } else {
-            res += `${sum}---`
-        }
+// const  getMathResult = (a, b) => {
+//     let res = '';
+//     let sum = 0;
+//     for(let i = 1; i <= b; i++) {
+//         sum += a;
+//         if(i === b) {
+//             res += sum
+//         } else {
+//             res += `${sum}---`
+//         }
+//     }
+
+//     return res;
+
+// }
+// const func = getMathResult(3, 10)
+// console.log(func)
+
+let numberOfFilms;
+
+function start() {
+        numberOfFilms = +prompt('Сколько вы уже фильмов посмотрели?');
+
+    while(numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('Сколько вы уже фильмов посмотрели?');
     }
-
-    return res;
-
 }
-const func = getMathResult(3, 10)
-console.log(func)
 
+start()
+
+// for(let i = 0; i < 1; i++) {
+//     const a = String(prompt('Один из последних просмотренных фильмов?')),
+//           b = +prompt('На сколько оцените его?');
+//         console.log(a,b)
+//           if( a != null && b != null && a != '' && b == '' && a.length < 50) {
+//             personalMovieDB.movies[a] = b;
+//           }else {
+//            i--
+//           }
+//      }
+
+
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
+
+const showMyDb = () => {
+    if(!personalMovieDB.privat) {
+        console.log(personalMovieDB)
+    }
+}
+
+showMyDb()
+
+const writeYourGenres = () => {
+    for(let i = 1; i <= 3; i++) {
+        let a = prompt(`${i} ваш любимый жанр?`)
+        personalMovieDB.genres.push(a)
+    }
+}
+
+writeYourGenres()
